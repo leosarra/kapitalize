@@ -5,10 +5,10 @@ import java.lang.StringBuilder
 class EnglishLanguage (private val specialRules: SpecialRules = SpecialRules.NONE) :Language  {
 
     private val capitalizeAfter = listOf("-", "'")
-    private val capitalizedWordsHebrew = listOf("ben","bat")
+    private val lowercaseWordsHebrew = listOf("ben","bat")
     private val capitalizedWordsItalian = listOf("da", "de", "del", "della", "di", "delle","lo", "dei")
     private val capitalizedWordsSpanish = listOf("el", "la")
-    private val capitalizedExceptions = listOf("al","ap","ben","bat","della","delle","da","de","di","du","del","el","la","lo","van","von")
+    private val lowercaseWords = listOf("al","ap","della","delle","da","de","di","du","del","el","la","lo","van","von")
     private val mcMacExceptions = listOf("macevicius","machado","machar","machin","machlin","macias","maciulis","mackie", "mackle",
     "macklin","macquarie","macomber", "macin","mackintosh","macken","machen","machiel","maciol","mackell","macklem","mackrell","maclin","mackey","mackley","machell","machon")
 
@@ -29,8 +29,8 @@ class EnglishLanguage (private val specialRules: SpecialRules = SpecialRules.NON
                 return@forEach
             }
 
-            if (specialRules == SpecialRules.HEBREW && word in capitalizedWordsHebrew) {
-                builder.append("${word.capitalize()} ")
+            if (specialRules == SpecialRules.HEBREW && word in lowercaseWordsHebrew) {
+                builder.append("${word.toLowerCase()} ")
                 return@forEach
             }
 
@@ -44,7 +44,7 @@ class EnglishLanguage (private val specialRules: SpecialRules = SpecialRules.NON
                 return@forEach
             }
 
-            if (word in capitalizedExceptions) {
+            if (word in lowercaseWords) {
                 if (word=="van" && input.startsWith(it)) builder.append("${it.capitalize()} ")
                 else builder.append("$it ")
                 return@forEach
