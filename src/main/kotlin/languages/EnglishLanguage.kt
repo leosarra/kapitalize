@@ -6,7 +6,7 @@ class EnglishLanguage (private val specialRules: SpecialRules = SpecialRules.NON
 
     private val capitalizeAfter = listOf("-", "'")
     private val capitalizedWordsHebrew = listOf("ben","bat")
-    private val capitalizedWordsItalian = listOf("da", "de", "del", "della", "di", "delle","lo")
+    private val capitalizedWordsItalian = listOf("da", "de", "del", "della", "di", "delle","lo", "dei")
     private val capitalizedWordsSpanish = listOf("el", "la")
     private val capitalizedExceptions = listOf("al","ap","ben","bat","della","delle","da","de","di","du","del","el","la","lo","van","von")
     private val mcMacExceptions = listOf("macevicius","machado","machar","machin","machlin","macias","maciulis","mackie", "mackle",

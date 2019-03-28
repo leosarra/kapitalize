@@ -18,7 +18,7 @@ class EnglishLanguageTest {
 
     @Test
     fun testItalianNames(){
-        assert(Kapitalize(EnglishLanguage(SpecialRules.ITALIAN)).capitalize("SILVIO DE GIUDICI") == "Silvio De Giudici")
+        assert(Kapitalize(EnglishLanguage(SpecialRules.ITALIAN)).capitalize("SILVIO DEI GIUDICI") == "Silvio Dei Giudici")
         assert(Kapitalize(EnglishLanguage(SpecialRules.ITALIAN)).capitalize("SILVIO DELLA ROSA") == "Silvio Della Rosa")
         assert(Kapitalize(EnglishLanguage(SpecialRules.ITALIAN)).capitalize("mario d'amato") == "Mario D'Amato")
     }
