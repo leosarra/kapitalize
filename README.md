@@ -1,9 +1,6 @@
-# Kapitalize ![Build Status](https://travis-ci.com/LithiumSR/Kapitalize.svg?branch=master) [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# Kapitalize ![Build Status](https://travis-ci.com/LithiumSR/Kapitalize.svg?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Kapitalize is a library to capitalize people's names.
-This library is written using Kotlin and the JDK8.
-
-Kapitlize is not perfect and never will, some names may be incorrectly capitalized.
 
 At the time of writing the library supports namecases that includes:
 Mc, Mac, al, el, ap, da, de, delle, della, di, du, del, der, 
@@ -12,6 +9,9 @@ Mc, Mac, al, el, ap, da, de, delle, della, di, du, del, der,
 Kapitalize correctly deals with names which contain apostrophies and hyphens too.
 
 There are "special rules" for the following languages: Italian, Spanish and Hebrew.
+
+**Kapitlize is not perfect and never will, some names may be incorrectly capitalized.**
+
 ## Getting started
 
 ### Compile from sources
@@ -74,7 +74,7 @@ println(kapitalize.capitalize("hEnRy vIi") // output: "Henry VIII"
 println(kapitalize.capitalize("O'CALLAGHAN") // output: "O'Callaghan"
 println(kapitalize.capitalize(" mckenna ") // output: "McKenna"
 println(kapitalize.capitalize("LEIGH-WILLIAMS ") // output: "Leigh-Williams"
-println(kapitalizeItalian.capitalize("silvio dei giudici") // output: "Silvio Dei Giudici
+println(kapitalizeItalian.capitalize("silvio dei giudici") // output: "Silvio Dei Giudici"
 
  ```
  
