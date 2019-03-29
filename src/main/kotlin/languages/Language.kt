@@ -1,7 +1,7 @@
 package languages
 
-interface Language{
-    fun transform(input:String):String
+interface Language {
+    fun transform(input: String): String
 }
 
 enum class SpecialRules {
