@@ -1,6 +1,6 @@
 package languages
 
-import java.lang.StringBuilder
+import KapitalizeHelper
 
 class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE) : Language {
 
@@ -17,8 +17,8 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
                                     "MChiro","MSc","DC","LFHOM","MFHOM","FFHOM","FADO","FBDOFCOptom","MCOptom","MOst","DPT","MCSP","FCSP.","SROT","MSCR","FSCR.","CPhT","RN","VN","RVN","BVScBVetMed","VetMB","BVM&S","MRCVS","FRCVS","FAWM","PGCAP","PGCHE","PGCE","PGDE","BEd","NPQH","QTSCSci","CSciTeach","RSci","RSciTech","CEng","IEng","EngTech","ICTTech","DEM","MM","CMarEngCMarSci","CMarTech","IMarEng","MarEngTech","RGN","SRN","RMN","RSCN","SEN","EN","RNMH","RN","RM","RN1RNA","RN2","RN3","RNMH","RN4","RN5","RNLD","RN6","RN8","RNC","RN7","RN9","RHV","RSN","ROH",
                                     "RFHN","SPANSPMH","SPCN","SPLD","SPHP","SCHM","SCLD","SPCC","SPDN","V100","V200","V300","LPE","MSc")
 
-    val capitalizePostnominals = true
-    val capitalizeRomanNumerals = true
+    var capitalizePostNominalsInitials: Boolean = true
+    var capitalizeRomanNumerals: Boolean = true
 
     override fun transform(input: String): String {
         val processedInput = input.trim().toLowerCase().replace(Regex(" +"), " ")
@@ -73,7 +73,7 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
                     }
                 }
 
-                if (capitalizePostnominals) postnomial.forEach {
+                if (capitalizePostNominalsInitials) postnomial.forEach {
                     if (word == it.toLowerCase()) {
                         builder.append("$it ")
                         return@forEachIndexed
