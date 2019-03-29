@@ -34,8 +34,15 @@ class EnglishLanguageTest {
     @Test
     fun testExceptions(){
         assert(Kapitalize().capitalize("VON STREIT") == "von Streit")
-        assert(Kapitalize().capitalize("VAN DyKe") == "van Dyke")
+        assert(Kapitalize().capitalize("VAN DyKe") == "Van Dyke")
         assert(Kapitalize().capitalize("AP LLWYD DAFYDD") == "ap Llwyd Dafydd")
+        assert(Kapitalize().capitalize("VAN VAN TEST") == "Van van Test")
+    }
+
+    @Test
+    fun testPostNominalInitials(){
+        assert(Kapitalize().capitalize("edd llddProf") == "EdD LLDDProf")
+        assert(Kapitalize().capitalize("DCONSTMGT") == "DConstMgt")
     }
 
     @Test
