@@ -39,7 +39,7 @@ Kapitalize can be easily added to your existing project through Maven or Gradle.
 <dependency>
     <groupId>com.github.LithiumSR</groupId>
     <artifactId>Kapitalize</artifactId>
-    <version>1.0.1</version>
+    <version>1.5</version>
 </dependency>
 ```
 
@@ -56,7 +56,7 @@ allprojects {
 2) Add the dependency
 ```
 dependencies {
-    implementation 'com.github.LithiumSR:Kapitalize:1.0.1'
+    implementation 'com.github.LithiumSR:Kapitalize:1.5'
 }
 ```
 
