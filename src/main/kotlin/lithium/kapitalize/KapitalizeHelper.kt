@@ -1,3 +1,5 @@
+package lithium.kapitalize
+
 class KapitalizeHelper {
     companion object {
         fun isRomanNumerals(input: String): Boolean {

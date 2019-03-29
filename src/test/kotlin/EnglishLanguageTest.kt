@@ -1,5 +1,6 @@
-import languages.EnglishLanguage
-import languages.SpecialRules
+import lithium.kapitalize.Kapitalize
+import lithium.kapitalize.languages.EnglishLanguage
+import lithium.kapitalize.languages.SpecialRules
 import org.junit.jupiter.api.Test
 
 class EnglishLanguageTest {
