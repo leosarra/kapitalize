@@ -2,8 +2,7 @@ package lithium.kapitalize.languages
 
 import lithium.kapitalize.KapitalizeHelper
 
-class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE) :
-    Language {
+class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE) : Language {
 
     private val capitalizeAfter = listOf("-", "'")
     private val lowercaseWordsHebrew = Regex("ben|bat")
@@ -80,6 +79,5 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
         }
         return builder.toString().trim().replace(Regex(" +"), " ")
     }
-
 
 }
