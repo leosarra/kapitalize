@@ -1,4 +1,4 @@
-package lithium.kapitalize.languages
+package com.lithium.kapitalize.languages
 
 interface Language {
     fun transform(input: String): String

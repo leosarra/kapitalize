@@ -1,8 +1,8 @@
-package lithium.kapitalize
+package com.lithium.kapitalize
 
-import lithium.kapitalize.languages.EnglishLanguage
-import lithium.kapitalize.languages.Language
-import lithium.kapitalize.languages.SpecialRules
+import com.lithium.kapitalize.languages.EnglishLanguage
+import com.lithium.kapitalize.languages.Language
+import com.lithium.kapitalize.languages.SpecialRules
 
 class Kapitalize(private val language: Language = EnglishLanguage(
     SpecialRules.NONE

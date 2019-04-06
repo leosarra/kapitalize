@@ -1,4 +1,4 @@
-package lithium.kapitalize
+package com.lithium.kapitalize
 
 class KapitalizeHelper {
     companion object {

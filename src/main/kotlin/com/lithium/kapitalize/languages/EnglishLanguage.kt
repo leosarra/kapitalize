@@ -1,6 +1,6 @@
-package lithium.kapitalize.languages
+package com.lithium.kapitalize.languages
 
-import lithium.kapitalize.KapitalizeHelper
+import com.lithium.kapitalize.KapitalizeHelper
 
 class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE) :
     Language {
