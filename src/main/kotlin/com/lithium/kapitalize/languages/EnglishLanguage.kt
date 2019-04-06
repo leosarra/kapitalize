@@ -2,8 +2,7 @@ package com.lithium.kapitalize.languages
 
 import com.lithium.kapitalize.KapitalizeHelper
 
-class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE) :
-    Language {
+class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE) : Language {
 
     private val capitalizeAfter = listOf("-", "'")
     private val lowercaseWordsHebrew = Regex("ben|bat")
@@ -57,18 +56,13 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
 
                 if (lowercaseWords.matches(word)) {
                     //Special rule for forename Van
-                    if (Regex("van.*").matches(processedInput) && index == 0) builder.append("${word.capitalize()} ") else builder.append(
-                        "$word "
-                    )
+                    if (index == 0 && Regex("van.*").matches(processedInput)) builder.append("${word.capitalize()} ") else builder.append("$word ")
                     return@forEachIndexed
                 }
 
                 if ((word.startsWith("mac") || word.startsWith("mc")) && word.length > 6) {
                     if (!mcMacExceptions.matches(word)) {
-                        val ret = if (word.startsWith("mac")) KapitalizeHelper.capitalizeAfterChar(
-                            "mac",
-                            word
-                        ) else KapitalizeHelper.capitalizeAfterChar("mc", word)
+                        val ret = if (word.startsWith("mac")) KapitalizeHelper.capitalizeAfterChar("mac", word) else KapitalizeHelper.capitalizeAfterChar("mc", word)
                         builder.append("${ret.capitalize()} ")
                         return@forEachIndexed
                     }
@@ -85,6 +79,5 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
         }
         return builder.toString().trim().replace(Regex(" +"), " ")
     }
-
 
 }
