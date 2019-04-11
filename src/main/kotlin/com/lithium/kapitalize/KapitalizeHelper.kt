@@ -6,12 +6,18 @@ class KapitalizeHelper {
             return input.toLowerCase().matches(Regex("^m{0,4}(cm|cd|d?c{0,3})(xc|xl|l?x{0,3})(ix|iv|v?i{0,3})$"))
         }
 
-        fun capitalizeAfterChar(afterString: String, input: String): String {
+        fun capitalizeAfterChar(kapitalize: Kapitalize?, afterString: String, input: String): String {
             return if (input.contains(afterString)) {
-                val chars = input.toLowerCase().toCharArray()
-                val index = input.indexOf(afterString) + afterString.length
-                if (index < input.length) chars[index] = chars[index].toUpperCase()
-                String(chars)
+                val stringBuilder = StringBuilder()
+                val list = input.split(afterString)
+                stringBuilder.append(list[0] + afterString)
+                if (list.size >= 2) if (kapitalize != null) stringBuilder.append(kapitalize.capitalize(list[1]).capitalize()) else stringBuilder.append(
+                    list[1].capitalize()
+                )
+                list.forEachIndexed { index, s ->
+                    if (index > 1) stringBuilder.append(s)
+                }
+                stringBuilder.toString()
             } else input
         }
     }

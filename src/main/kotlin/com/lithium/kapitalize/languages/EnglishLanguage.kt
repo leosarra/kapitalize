@@ -1,5 +1,6 @@
 package com.lithium.kapitalize.languages
 
+import com.lithium.kapitalize.Kapitalize
 import com.lithium.kapitalize.KapitalizeHelper
 
 class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE) : Language {
@@ -17,10 +18,10 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
                                     "MChiro","MSc","DC","LFHOM","MFHOM","FFHOM","FADO","FBDOFCOptom","MCOptom","MOst","DPT","MCSP","FCSP.","SROT","MSCR","FSCR.","CPhT","RN","VN","RVN","BVScBVetMed","VetMB","BVM&S","MRCVS","FRCVS","FAWM","PGCAP","PGCHE","PGCE","PGDE","BEd","NPQH","QTSCSci","CSciTeach","RSci","RSciTech","CEng","IEng","EngTech","ICTTech","DEM","MM","CMarEngCMarSci","CMarTech","IMarEng","MarEngTech","RGN","SRN","RMN","RSCN","SEN","EN","RNMH","RN","RM","RN1RNA","RN2","RN3","RNMH","RN4","RN5","RNLD","RN6","RN8","RNC","RN7","RN9","RHV","RSN","ROH",
                                     "RFHN","SPANSPMH","SPCN","SPLD","SPHP","SCHM","SCLD","SPCC","SPDN","V100","V200","V300","LPE","MSc")
 
-    var capitalizePostNominalsInitials: Boolean = true
-    var capitalizeRomanNumerals: Boolean = true
-
-    override fun transform(input: String): String {
+    var capitalizePostNominalsInitials = true
+    var capitalizeRomanNumerals = true
+    var capitalizePrefix = false
+    override fun transform(kapitalize: Kapitalize, input: String): String {
         val processedInput = input.trim().toLowerCase().replace(Regex(" +"), " ")
         val words = processedInput.split(" ")
         val builder = StringBuilder()
@@ -30,7 +31,7 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
 
                 for (item in capitalizeAfter) {
                     if (word.contains(item)) {
-                        word = KapitalizeHelper.capitalizeAfterChar(item, word)
+                        word = KapitalizeHelper.capitalizeAfterChar(kapitalize, item, word)
                     }
                 }
 
@@ -40,7 +41,8 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
                 }
 
                 if (specialRules == SpecialRules.HEBREW && lowercaseWordsHebrew.matches(word)) {
-                    builder.append("${word.toLowerCase()} ")
+                    if (index == 0 && capitalizePrefix) builder.append("${word.capitalize()} ")
+                    else builder.append("${word.toLowerCase()} ")
                     return@forEachIndexed
                 }
 
@@ -56,13 +58,19 @@ class EnglishLanguage(private val specialRules: SpecialRules = SpecialRules.NONE
 
                 if (lowercaseWords.matches(word)) {
                     //Special rule for forename Van
-                    if (index == 0 && Regex("van.*").matches(processedInput)) builder.append("${word.capitalize()} ") else builder.append("$word ")
+                    if (index == 0 && Regex("van.*").matches(processedInput)) builder.append("${word.capitalize()} ")
+                    else if (index == 0 && capitalizePrefix) builder.append("${word.capitalize()} ")
+                    else builder.append("$word ")
                     return@forEachIndexed
                 }
 
-                if ((word.startsWith("mac") || word.startsWith("mc")) && word.length > 6) {
+                if ((word.startsWith("mac") || word.startsWith("mc")) && word.length > 5) {
                     if (!mcMacExceptions.matches(word)) {
-                        val ret = if (word.startsWith("mac")) KapitalizeHelper.capitalizeAfterChar("mac", word) else KapitalizeHelper.capitalizeAfterChar("mc", word)
+                        val ret = if (word.startsWith("mac")) KapitalizeHelper.capitalizeAfterChar(
+                            null,
+                            "mac",
+                            word
+                        ) else KapitalizeHelper.capitalizeAfterChar(null, "mc", word)
                         builder.append("${ret.capitalize()} ")
                         return@forEachIndexed
                     }

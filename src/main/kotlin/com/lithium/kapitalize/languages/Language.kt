@@ -1,7 +1,9 @@
 package com.lithium.kapitalize.languages
 
+import com.lithium.kapitalize.Kapitalize
+
 interface Language {
-    fun transform(input: String): String
+    fun transform(kapitalize: Kapitalize, input: String): String
 }
 
 enum class SpecialRules {
