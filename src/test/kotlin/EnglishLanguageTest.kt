@@ -10,6 +10,7 @@ class EnglishLanguageTest {
         assert(Kapitalize().capitalize(" mactestunit ") == "MacTestunit")
         assert(Kapitalize().capitalize(" mctestunit ") == "McTestunit")
         assert(Kapitalize().capitalize(" mAc") == "Mac")
+        assert(Kapitalize().capitalize("SILVA-MACNAY") == "Silva-MacNay")
     }
 
     @Test
